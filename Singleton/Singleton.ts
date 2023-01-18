@@ -1,43 +1,47 @@
+class Singleton {
+    private static instance: Singleton;
 
-var Singleton = /** @class */ (function () {
     /**
      * The Singleton's constructor should always be private to prevent direct
      * construction calls with the `new` operator.
      */
-    function Singleton() {
-    }
+    private constructor() { }
+
     /**
      * The static method that controls the access to the singleton instance.
      *
      * This implementation let you subclass the Singleton class while keeping
      * just one instance of each subclass around.
      */
-    Singleton.getInstance = function () {
+    public static getInstance(): Singleton {
         if (!Singleton.instance) {
             Singleton.instance = new Singleton();
         }
+
         return Singleton.instance;
-    };
+    }
+
     /**
      * Finally, any singleton should define some business logic, which can be
      * executed on its instance.
      */
-    Singleton.prototype.someBusinessLogic = function () {
+    public someBusinessLogic() {
         // ...
-    };
-    return Singleton;
-}());
+    }
+}
+
 /**
  * The client code.
  */
 function clientCode() {
-    var s1 = Singleton.getInstance();
-    var s2 = Singleton.getInstance();
+    const s1 = Singleton.getInstance();
+    const s2 = Singleton.getInstance();
+
     if (s1 === s2) {
         console.log('Singleton works, both variables contain the same instance.');
-    }
-    else {
+    } else {
         console.log('Singleton failed, variables contain different instances.');
     }
 }
+
 clientCode();
