@@ -8,7 +8,7 @@ abstract class AbstractHandler implements Handler{
     private nextHandler: Handler;
 
     public setNext(handler: Handler): Handler {
-        
+        /* */
     }
     
     public handle(request: string): string {
