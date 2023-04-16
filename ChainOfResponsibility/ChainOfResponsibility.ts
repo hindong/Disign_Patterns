@@ -10,4 +10,12 @@ abstract class AbstractHandler implements Handler{
     public setNext(handler: Handler): Handler {
         
     }
+    
+    public handle(request: string): string {
+      if (this.nextHandler) {
+         return this.nextHandler.handle(request);
+      }
+
+      return null;
+    }
 }
